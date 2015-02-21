@@ -1,26 +1,23 @@
 ---
-layout: page
-title: Pages 
-header: Pages
-group: example-page
+layout: default
 ---
 
-<h2>All Pages</h2>
-{% assign pages_list = site.pages %}
-{% include JB/pages_list %}
+<div class="home">
 
+  <h1 class="page-heading">Posts</h1>
 
-<h2>Pages in group: project</h2>
-{% assign pages_list = site.pages %}
-{% assign group = 'project' %}
-{% include JB/pages_list %}
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-<h2>Pages in group: example-page</h2>
-{% assign pages_list = site.pages %}
-{% assign group = 'example-page' %}
-{% include JB/pages_list %}
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
 
-<br/>
-<p>
-  View the source-code for more info.
-</p>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
